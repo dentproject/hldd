@@ -17,15 +17,15 @@ and control the switch forwarding plane itself.
 
 The intention of this project is not to replace or compete with any of the
 existing network operating systems, but rather to provide a common and
-extensible layer on which those can be built. Its principles and paradigms are
-largely aligned and adapted from the
+extensible layer on which they can be built. Its principles and paradigms are
+largely aligned with and adapted from the
 [OCP OpenNetworkLinux Project](https://github.com/opencomputeproject/OpenNetworkLinux).
 This proposal specifically seeks an agreement between the developers and
 maintainers of the aforementioned network operating system communities, to be
-able to shared common implementations to support open networking hardware.
+able to share common implementations to support open networking hardware.
 
 Support for open networking hardware platforms is currently distributed over
-various different projects. Many platforms, especially older ones are supported
+various different projects. Many platforms, especially older ones, are supported
 by OpenNetworkLinux, many are supported by SONiC, and some are supported by
 DentOS, which is based on OpenNetworkLinux, but targets different devices. The
 open hardware support is usually very tightly integrated in the build systems,
@@ -74,10 +74,10 @@ at the bottom](images/layering-example.png "layering example")
 
 To allow quick testing and easy extension for other users, an example
 implementation and support layer for Yocto will be provided. It will contain all
-basic building blocks for creation of an installable image:
+basic building blocks for creating an installable image:
 
-- recipes for above kernel and platform support
-- class and image recipe for a ONIE installable image
+- recipes for the basic kernel mentioned above and for platform support
+- class and image recipe for an ONIE installable image
 - machine definitions as generic OS-based
 
 ### Kernel recipe and configuration handling
@@ -95,7 +95,7 @@ TBD: should we have patches or branches with backport commits? Maybe both?
 
 ### Platform support recipes
 
-To allow easier extensions by vendors or other users, the platform support will
+To allow easier extension by vendors or other users, the platform support will
 be split into multiple subpackages:
 
 - a base package for the userspace utilities and API libraries
@@ -106,21 +106,20 @@ be split into multiple subpackages:
 ASIC/dataplane support is out of scope for now, but may be provided by a future
 project or extension.
 
-The only exception are switchdev enabled platforms like Mellanox or Marvell
+The only exception are switchdev-enabled platforms like Mellanox or Marvell
 Prestera, where the ASIC support is already provided by the upstream Linux kernel.
 
 ### Targeted Kernel and Yocto versions
 
-Target Yocto version is scarthgarp, which is the next planned LTS release for
-April ‘24.
+Target Yocto version is scarthgarp, which is the next LTS release, planned for
+April 2024.
 
-Initial Kernel version target could be 5.15 (minimum kernel version of Yocto),
-or newest LTS (6.6). The kernel patch version will be a moving target, and regularly
+The initial Kernel version target could be 5.15 (minimum kernel version of Yocto)
+6.6 (the latest LTS version of the Linux kernel). The kernel patch version will be a moving target, and regularly
 updated (ideally weekly).
 
-Since there will be many out of tree drivers for the platform support, required
-API updates should be done via coccinelle semantic patches
-https://coccinelle.gitlabpages.inria.fr/website/. This should ensure that the
+Since there will be many out-of-tree drivers for the platform support, required
+API updates should be done via [coccinelle semantic patches](https://coccinelle.gitlabpages.inria.fr/website/). This should ensure that the
 amount of work needed for keeping drivers building and working with newer
 kernels stays manageable.
 
@@ -139,7 +138,7 @@ in-kernel driver will be disabled.
 
 ## Milestones
 
-- M1: initial layer with kernel and hand selected/crafted platform support,
+- M1: initial layer with kernel and hand-selected/-crafted platform support,
   booting a ramdisk kernel
 - M2: refined kernel configuration via kernel-meta, import of various platforms
   via scripts from SONiC, initial installer
@@ -149,7 +148,7 @@ in-kernel driver will be disabled.
 
 ## Future Extensions
 
-- Provide ASIC / dataplane support via e.g. generic SAI implementations.
+- Provide ASIC / dataplane support, e.g. via generic SAI implementations.
 - Provide a common API / userspace utilities for accessing various sensors and
   data regardless of their specific API (PDDF, ONLP, S3IP).
 - Provide a common testing platform for testing and verification of drivers and
