@@ -19,7 +19,7 @@ The intention of this project is not to replace or compete with any of the
 existing network operating systems, but rather to provide a common and
 extensible layer on which they can be built. Its principles and paradigms are
 largely aligned with and adapted from the
-[OCP OpenNetworkLinux Project](https://github.com/opencomputeproject/OpenNetworkLinux).
+[OCP OpenNetworkLinux Project](https://github.com/opencomputeproject/OpenNetworkLinux) (which has been moved to maintenance mode, pending archival).
 This proposal specifically seeks an agreement between the developers and
 maintainers of the aforementioned network operating system communities, to be
 able to share common implementations to support open networking hardware.
