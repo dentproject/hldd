@@ -8,7 +8,7 @@ The current open network operating system (NOS) market is fragmented and has
 multiple competing projects with different focus, architecture and level of
 maturity. Despite those differences, all of the currently available,
 open network operating systems are utilizing a mainline Linux kernel and
-need to build and maintain platform specific abstractions (e.g out of tree
+need to build and maintain platform-specific abstractions (e.g., out-of-tree
 drivers) for peripheral switch hardware.
 
 This proposal aims to reduce the fragmentation by providing a common base for
