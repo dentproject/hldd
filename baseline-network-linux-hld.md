@@ -6,7 +6,7 @@
 
 The current open network operating system (NOS) market is fragmented and has
 multiple competing projects with different focus, architecture and level of
-maturity. Although given those differences, all of the currently available
+maturity. Despite those differences, all of the currently available,
 and open network operating systems are utilising a mainline Linux kernel and
 need to build and maintain platform specific abstractions (e.g out of tree
 drivers) for peripheral switch hardware.
