@@ -150,21 +150,74 @@ in-kernel driver will be disabled.
 
 ## Milestones
 
-- M1: initial layer with kernel and hand-selected/-crafted platform support,
-  booting a ramdisk kernel
-- M2: refined kernel configuration via kernel-meta, import of various platforms
-  via scripts from SONiC, initial installer
-- M3: import missing platforms from ONL and DentOS, ONLP adapter(?), extensible
-  installer
-- M4: get accepted as official layer
+- M1:
+  - initial platform support repository with hand-selected/-crafted platform
+    support (>= 1 platform)
+  - initial machine definitions
+  - initial layer with kernel with defconfig, and package for platform support
+  - initial kernel 5.15?
+  - ramdisk image bootable on selected platform(s)
+- M2:
+  - refined kernel configuration via kernel-meta
+  - import of various platforms via scripts from SONiC
+  - initial ONIE NOS installer
+- M3:
+  - import missing platforms from ONL (convert them to PDDF?)
+  - import missing platforms from DentOS (convert them to PDDF?)
+  - kernel 6.6 support(?)
+  - coccinelle semantic patches for upgrading drivers to supprot linux 6.6 APIs
+  - ONLP adapter(?)
+  - extensible ONIE NOS installer
+- M4: get accepted as official yocto layer
+  - are we fine with LTS kernels, or do we need to support non-LTS ones?
+  - figure out long-term maintenance strategy
 
-## Future Extensions
+## Possible Future Extensions
 
-- Provide ASIC / dataplane support, e.g. via generic SAI implementations.
-- Provide a common API / userspace utilities for accessing various sensors and
-  data regardless of their specific API (PDDF, ONLP, S3IP).
-- Provide a common testing platform for testing and verification of drivers and
-  libraries.
+### ASIC / dataplane support
+
+While providing ASIC / dataplane support is out of scope for this project,
+a follow up project could provide appropriate SAI or similar packaging.
+
+### Common userspace API / utilities
+
+Currently there are several competing ways of providing access to sensor data
+and other values. To avoid forcing users to know which one is used for their
+current platform, it would be nice to have a generic/common utilities for
+querying the data, hiding the implementation details.
+
+### Conformance testing or DIAG utilities
+
+To allow verifying that various drivers and libraries work, it would be good
+to have some frameworks or testing utilities for OEMs to ensure that everything
+works from the API side.
+
+### Improved driver/platform architecture
+
+Currently the need for platform initialization code in user space is due to
+insufficient hardware description from the platform.
+
+To reduce the need for custom platform initialization code in user space, and in
+best case even remove it, we should work for a more complete description of the
+platform from the platform itself.
+
+For device-tree enabled platforms, the device tree should describe the hardware
+layout fully. Any configuration values set by the platform init script should be
+configurable via appropriate node attributes.
+
+For ACPI platforms, devices should be described in their appropriate tables like
+described in [The Linux kernel firwmware guide](https://docs.kernel.org/firmware-guide/acpi/enumeration.html).
+
+A similar approach to the device tree properties can even be done using
+[\_DSD Device Properties](https://docs.kernel.org/firmware-guide/acpi/DSD-properties-rules.html).
+
+These ACPI platform device descriptions do not necessarily need to live in the
+BIOS itself, and may be loaded from userspace as Linux [support upgrading ACPI
+tables on boot](https://docs.kernel.org/admin-guide/acpi/initrd_table_override.html).
+
+Describing all devices and their layout in the firmware (device tree or ACPI)
+will simplify the platform initialization by userspace, and avoid any ambiguity
+due to e.g. dynamic  I2C bus number assignment.
 
 ## Contributors
 
