@@ -135,8 +135,8 @@ API updates should be done via [coccinelle semantic patches](https://coccinelle.
 amount of work needed for keeping drivers building and working with newer
 kernels stays manageable.
 
-These will also help vendors quickly updating their drivers when submitting new
-platforms based on older releases.
+The semantic patches will also help vendors quickly updating their drivers when
+submitting new platforms based on older releases.
 
 ### DentOS as a layer extending the base platform support layer
 
