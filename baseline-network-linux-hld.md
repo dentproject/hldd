@@ -51,15 +51,17 @@ The base networking hardware support is organized in multiple repositories:
 
 - kernel: Linux fork with required base changes (backports of important
 submissions, etc)
-- platform-support: drivers, libraries and userspace code for initializing
-platforms
-(do we need more?)
+- hardware-platform-support: drivers, libraries and userspace code for
+  initializing hardware platforms (do we need more?)
 - TBD: organization of platform support
 - TBD: platform initialization
 
-In the first iteration, the platform support is fine as-is. Future iterations
-should focus on improving the platform drivers and support code to follow modern
-code style and compile with as few warnings as possible, ideally none.
+In the first iteration, the platform support is fine in it the state as it is
+in their source repository.
+
+Future iterations should focus on improving the platform drivers and support
+code to follow modern code style and compile with as few warnings as possible,
+ideally none.
 
 New platform support should follow modern coding styles from the beginning (e.g.
 kernel coding style for modules).
