@@ -168,7 +168,7 @@ in-kernel driver will be disabled.
   - coccinelle semantic patches for upgrading drivers to supprot linux 6.6 APIs
   - ONLP adapter(?)
   - extensible ONIE NOS installer
-- M4: get accepted as official yocto layer
+- M4: get accepted as [official yocto layer](https://www.yoctoproject.org/development/yocto-project-compatible-layers/)
   - are we fine with LTS kernels, or do we need to support non-LTS ones?
   - figure out long-term maintenance strategy
 
