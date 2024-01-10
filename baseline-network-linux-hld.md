@@ -72,6 +72,16 @@ kernel coding style for modules).
 hardware support layer in the middle, and base Yocto and Open Embedded layers
 at the bottom](images/layering-example.png "layering example")
 
+### OS-agnostic hardware platform support
+
+To allow sharing the platform support between different operating systems, the
+support is contained in an independent repository. It should allow easy building
+and installation outside of OS distribution build systems, and allow building
+and development on-device.
+
+Any packaging decisions like if or and how to split up individual platform
+support should be up to the OS distribution packaging it.
+
 ### Yocto based example and testing OS
 
 To allow quick testing and easy extension for other users, an example
