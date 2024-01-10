@@ -127,8 +127,8 @@ Target Yocto version is scarthgarp, which is the next LTS release, planned for
 April 2024.
 
 The initial Kernel version target could be 5.15 (minimum kernel version of Yocto)
-6.6 (the latest LTS version of the Linux kernel). The kernel patch version will be a moving target, and regularly
-updated (ideally weekly).
+or 6.6 (the latest LTS version of the Linux kernel). The kernel patch version will
+be a moving target, and regularly updated (ideally weekly).
 
 Since there will be many out-of-tree drivers for the platform support, required
 API updates should be done via [coccinelle semantic patches](https://coccinelle.gitlabpages.inria.fr/website/). This should ensure that the
