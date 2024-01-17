@@ -35,11 +35,10 @@ which makes sharing and reusing the support hard.
 
 ## Design
 
-![example layering with operating layers on top like meta-dent, the proposed
-hardware support layer in the middle, and base Yocto and Open Embedded layers
-at the bottom](images/layering-example.png "layering example")
+![example layering with distribution layer on top, the BSP layer in the middle,
+and base OS agnostic packages at the bottom](images/layering-example.png "layering example")
 
-### OS-agnostic hardware platform support
+### OS agnostic hardware platform support
 
 To allow sharing the platform support between different operating systems, the
 support is contained in an independent repository. It should allow easy building
@@ -49,15 +48,22 @@ and development on-device.
 Any packaging decisions like if or and how to split up individual platform
 support should be up to the OS distribution packaging it.
 
-### Yocto based example and testing OS
+This allows non-Yocto based Operation Systems to make use of the platform
+support.
+
+### Base platform support Yocto layer (BSP layer)
+
+The base platform support Yocto layer will provide the appropriate recipes and
+definitions for running on supported platforms. It will contain recipes for the
+kernel, the platform support, and appropriate machine definitions to target
+platforms based on their architecture.
+
+### Yocto based example NOS (Distribution layer)
 
 To allow quick testing and easy extension for other users, an example
 implementation and support layer for Yocto will be provided. It will contain all
-basic building blocks for creating an installable image:
-
-- recipes for the basic kernel mentioned above and for platform support
-- class and image recipe for an ONIE installable image
-- machine definitions as generic OS-based
+basic building blocks for creating an installable image, i.e. a distribution
+definition, as well as appropriate recipes for creating ONIE installable images.
 
 ## Functional Description
 
