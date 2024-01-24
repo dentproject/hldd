@@ -39,6 +39,15 @@ able to share common implementations to support open networking hardware.
 ![example layering with distribution layer on top, the BSP layer in the middle,
 and base OS agnostic packages at the bottom](images/layering-example.png "layering example")
 
+The project will be split into three layers:
+
+- At the bottom the OS agnostic hardware platform support. NOS's not based on
+  Yocto (NOS C) will directly use it.
+- In the middle the BSP Yocto layer packaging the platform support. NOS's based
+  on Yocto may chose to just use these parts (NOS B).
+- At the top the distribution layer, providing a full example NOS, making use of
+  the BSP layer. NOS's trying to enhance it will use this layer.
+
 ### OS agnostic hardware platform support
 
 To allow sharing the platform support between different operating systems, the
