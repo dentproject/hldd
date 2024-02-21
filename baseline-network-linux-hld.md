@@ -194,9 +194,33 @@ a follow up project could provide appropriate SAI or similar packaging.
 ### Common userspace API / utilities
 
 Currently there are several competing ways of providing access to sensor data
-and other values. To avoid forcing users to know which one is used for their
+and other values and anhancing them with information (e.g. their location in
+the hardware). To avoid forcing users to know which one is used for their
 current platform, it would be nice to have a generic/common utilities for
 querying the data, hiding the implementation details.
+
+Currently existing implementations:
+
+* ONLP
+  * part of [OpenNetworkLinux](https://github.com/opencomputeproject/OpenNetworkLinux)
+  * written in C, with each platform providing a library implementing
+    various API calls for detecting and reading out sensors, LEDs, SFPs,
+    etc.
+  * uses custom kernel modules for some parts (e.g. SFP access)
+  * does not define any kernel APIs for drivers to hook into for discoverability, and
+    leave that to the userspace code
+  * based on the [infra](https://github.com/opennetlinux/infra) buildsystem,
+    written in python 2
+* [PDDF](https://github.com/sonic-net/SONiC/blob/master/doc/platform/brcm_pdk_pddf.md)
+  * part of [SONiC](https://github.com/sonic-net/SONiC)
+  * written in python 3
+  * provides an optional [kernel API for platform drivers](https://github.com/sonic-net/sonic-buildimage/tree/master/platform/pddf/i2c/modules) to register, but
+    platforms may opt to use userspace libriaries written in python
+  * primarily indended for Broadcom ASIC based devices?
+* [S3IP](https://github.com/sonic-net/SONiC/blob/master/doc/s3ip_sysfs/s3ip_sysfs_hld.md)
+  * defines a kernel API and appropriate SYSFS entries for discoverability
+  * API usage is mandatory
+  * designed by Chinese ODMs, aimed for networking
 
 ### Conformance testing or DIAG utilities
 
